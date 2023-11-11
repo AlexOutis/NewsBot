@@ -12,17 +12,20 @@ def get_article_body(url):
 
         # Find the HTML element containing the article body
         # This is a generic example, and you might need to inspect the HTML structure of the specific website you're working with
-        article_body_element = soup.find('div', class_='article-body')  # Adjust according to your HTML structure
+        article_body_element = soup.findall('div', class_='article ')  # Adjust according to your HTML structure
 
         if article_body_element:
             # Extract and return the text content of the article body
+            return article_body_element.get_text()
+        else:
+            article_body_element = soup.find('div', class_='article ')  # Adjust according to your HTML structure
             return article_body_element.get_text()
 
     # If the request was not successful or the article body wasn't found, return None
     return None
 
 # Example usage
-url = 'https://www.rtvslo.si/svet/bliznji-vzhod/najvecji-bolnisnici-v-gazi-zmanjkalo-goriva-izrael-znova-uvedel-stiriurni-rok-za-evakuacijo/687804'
+url=''
 article_body = get_article_body(url)
 
 if article_body:
